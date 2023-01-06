@@ -1,10 +1,9 @@
 // TODO: Include packages needed for this application
-
 const inquirer = require("inquirer");
+const generateMarkdown = require("./utils/generateMarkdown");
 const { writeFile } = require("fs").promises;
 // TODO: Create an array of questions for user input
-const questions = () => {
-  return inquirer.prompt([
+const questions =[
     {
       type: "input",
       name: "username",
@@ -50,22 +49,17 @@ const questions = () => {
       name: "contributing",
       message: "what does the user need to know about contributing to he repo?",
     },
-  ]);
-};
+  ];
 
 // TODO: Create a function to write README file
 
 // TODO: Create a function to initialize app
 function init() {
-  questions()
-    // Use writeFile method imported from fs.promises to use promises instead of
-    // a callback function
-    const WriteReadME = `${data.name}`
-    // .then((answers) => writeFile("index.html", writeToFile(answers)))
-    // .then(() => console.log("Successfully wrote to index.html"))
-    // .catch((err) => console.error(err));
-}
+  inquirer.prompt(questions).then((userResponses) => {
+    console.log("generating")
+    writeFile("README.md", generateMarkdown({...userResponses}))
+  })
 
-// console.log(WriteReadME);
+};
 // Function call to initialize app
 init();
