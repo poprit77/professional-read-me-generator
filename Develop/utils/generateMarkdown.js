@@ -51,7 +51,7 @@ function generateMarkdown(userResponses) {
   // Generate Table of Contents conditionally based on userResponses
   console.log(badge);
   // Generate markdown for the top required portions of the README
-  let draftMarkdown = `# ${userResponses.title}
+  let draftMarkdown = `# ${userResponses.project}
   ![Badge for GitHub repo top language](https://img.shields.io/badge/${badge}-ReadMe-blue)
   Check out the badges hosted by [shields.io](https://shields.io/).
   
